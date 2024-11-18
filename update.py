@@ -1,7 +1,11 @@
+import os
+from urllib import parse
+
 HEADER = """#
 # 코드트리 문제 풀이 목록
 [![코드트리|실력진단-wndid2008](https://banner.codetree.ai/v1/banner/wndid2008)](https://www.codetree.ai/profiles/wndid2008)
 """
+
 SUPPORTED_LANGUAGES = {
     "Python": ".py",
     "Java": ".java",
@@ -20,7 +24,7 @@ def get_language_from_extension(file_name):
     for language, ext in SUPPORTED_LANGUAGES.items():
         if file_name.endswith(ext):
             return language
-    return None  # 지원하지 않는 확장자
+    return None
 
 def extract_problem_description(readme_path):
     """문제 폴더의 README.md에서 문제 설명 추출"""
@@ -46,19 +50,26 @@ def generate_readme():
 
     modified = False
 
-    for root, dirs, files in os.walk("."):
-        parent_dir = os.path.basename(root)
-        if not parent_dir.isdigit() or len(parent_dir) != 6:
+    # 날짜 폴더를 탐색
+    for date_folder in sorted(os.listdir(".")):
+        if not date_folder.isdigit() or len(date_folder) != 6:
             continue
 
-        for folder in dirs:
-            problem_path = os.path.join(root, folder)
+        date_path = os.path.join(".", date_folder)
+
+        # 문제 폴더 탐색
+        for problem_folder in os.listdir(date_path):
+            problem_path = os.path.join(date_path, problem_folder)
+            if not os.path.isdir(problem_path):
+                continue
+
             problem_readme = os.path.join(problem_path, "README.md")
             problem_description = extract_problem_description(problem_readme) if os.path.exists(problem_readme) else "문제 설명 없음"
 
-            content += f"| {parent_dir} | [{folder}]({parse.quote(problem_path)}) | "
+            # 날짜 및 문제 폴더
+            content += f"| {date_folder} | [{problem_folder}]({parse.quote(problem_path)}) | "
 
-            # 지원 언어 파일 추가
+            # 파일 탐색
             found_files = []
             for file_name in os.listdir(problem_path):
                 language = get_language_from_extension(file_name)
@@ -68,7 +79,6 @@ def generate_readme():
 
             if found_files:
                 for idx, (file_name, language, file_path) in enumerate(found_files):
-                    # 첫 줄에는 문제 설명을 포함, 이후는 빈칸으로 처리
                     if idx == 0:
                         content += f"{file_name} | {language} | [링크]({parse.quote(file_path)}) | {problem_description} |\n"
                     else:
