@@ -25,6 +25,13 @@ SUPPORTED_LANGUAGES = {
     "Rust": ".rs"
 }
 
+# 난이도와 이미지 링크 정의
+DIFFICULTY_IMAGES = {
+    "쉬움": "https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge",
+    "보통": "https://img.shields.io/badge/보통-%23FFC433.svg?for-the-badge",
+    "어려움": "https://img.shields.io/badge/어려움-%23D24D57.svg?for-the-badge"
+}
+
 def get_language_from_extension(file_name):
     """파일 확장자를 기반으로 언어 반환"""
     for language, ext in SUPPORTED_LANGUAGES.items():
@@ -35,7 +42,7 @@ def get_language_from_extension(file_name):
 def extract_problem_info(readme_path):
     """문제 폴더의 README.md에서 유형과 문제 난이도 추출"""
     problem_type = "유형 없음"
-    problem_difficulty = "난이도 없음"
+    problem_difficulty = "쉬움"  # 기본 난이도는 쉬움으로 설정
     try:
         with open(readme_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
@@ -44,7 +51,7 @@ def extract_problem_info(readme_path):
                 if line.startswith("|유형|"):
                     match = re.search(r"\|유형\| (.*?) \|", line)
                     if match:
-                        problem_type = match.group(1).strip()
+                        problem_type = match.group(1).strip().split(" / ")[0]  # 첫 번째 부분만 추출 (예: Novice Low)
 
                 elif line.startswith("|난이도|"):
                     match = re.search(r"\|난이도\| (.*?) \|", line)
@@ -72,7 +79,10 @@ def generate_readme():
                 continue
 
             problem_readme = os.path.join(problem_path, "README.md")
-            problem_type, problem_difficulty = extract_problem_info(problem_readme) if os.path.exists(problem_readme) else ("유형 없음", "난이도 없음")
+            problem_type, problem_difficulty = extract_problem_info(problem_readme) if os.path.exists(problem_readme) else ("유형 없음", "쉬움")
+
+            # 난이도 이미지 링크 변환
+            difficulty_image = DIFFICULTY_IMAGES.get(problem_difficulty, DIFFICULTY_IMAGES["쉬움"])
 
             # 날짜 및 문제 폴더
             content += f"| {date_folder} | [{problem_folder}]({quote(problem_path)}) | "
@@ -88,9 +98,9 @@ def generate_readme():
             if found_files:
                 for idx, (file_name, language, file_path) in enumerate(found_files):
                     if idx == 0:
-                        content += f"{file_name} | {language} | [링크]({quote(file_path)}) | {problem_type} / {problem_difficulty} |\n"
+                        content += f"{file_name} | {language} | [링크]({quote(file_path)}) | {problem_type} | ![쉬움]({difficulty_image}) |\n"
                     else:
-                        content += f"| | | {file_name} | {language} | [링크]({quote(file_path)}) | |\n"
+                        content += f"| | | {file_name} | {language} | [링크]({quote(file_path)}) | | |\n"
             else:
                 content += "- | - | - | - |\n"
 
