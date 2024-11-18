@@ -5,15 +5,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> arr = new ArrayList<>();
         int len = 0;
+        boolean onoff = true;
 
-        while(true){
+        while(onoff){
             int n = sc.nextInt();
             len++;
             if(n != 0 || len <= 4){
                 arr.add(n);
             }else{
                 arr.add(n);
-                break;
+                onoff = false;
             }
         }
 
@@ -22,7 +23,7 @@ public class Main {
 
         Collections.reverse(arr);
 
-        for(int i=0;i<4;i++){
+        for(int i=0;i<=4;i++){
             result += arr.get(i);
         }
 
