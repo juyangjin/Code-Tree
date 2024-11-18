@@ -14,24 +14,32 @@ def generate_readme():
     content += "| 업로드 날짜 | 파일 이름 | 링크 |\n"
     content += "| ---------- | -------- | ---- |\n"
 
+    modified = False  # 파일이 수정되었는지 추적
+
     for root, dirs, files in os.walk("."):
-        # 현재 디렉토리가 날짜 형식의 디렉토리인지 확인
         parent_dir = os.path.basename(root)
         if not parent_dir.isdigit() or len(parent_dir) != 6:
-            continue  # 6자리 숫자가 아니면 스킵
+            continue
 
-        # 유효한 파일만 정리
-        valid_files = [file for file in files if file.endswith(('.py', '.cpp', '.java', '.txt'))]
-        for file in valid_files:
-            file_path = os.path.join(root, file)
-            content += "| {} | {} | [링크]({}) |\n".format(
-                parent_dir, file, parse.quote(file_path)
-            )
+        if files:
+            for file in files:
+                if file.endswith(('.py', '.cpp', '.java', '.txt')):  # 유효한 파일 필터
+                    file_path = os.path.join(root, file)
+                    content += "| {} | {} | [링크]({}) |\n".format(
+                        parent_dir, file, parse.quote(file_path)
+                    )
+                    modified = True
+        else:
+            content += "| {} | 파일 없음 | - |\n".format(parent_dir)
+            modified = True
 
-    # README.md 파일 생성
-    with open("README.md", "w") as fd:
-        fd.write(content)
-    print("README.md has been updated successfully.")
+    if modified:
+        with open("README.md", "w") as fd:
+            fd.write(content)
+        print("README.md has been updated successfully.")
+    else:
+        print("No changes were made to README.md.")
 
 if __name__ == "__main__":
     generate_readme()
+
