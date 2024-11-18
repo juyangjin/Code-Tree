@@ -18,6 +18,6 @@ public class Main {
 
         System.out.print(n + " ");
         double tmp = Math.round(n2 /= len);
-        System.out.print(n2);
+        System.out.print(tmp);
     }
 }
