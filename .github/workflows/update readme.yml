@@ -23,7 +23,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install python-leetcode
-    - name: Run update.py
+    - name: Run Update code_tree_readme.py
       run: |
         python update.py  # Code Tree의 Python 스크립트 실행
     - name: Check if README.md changed
