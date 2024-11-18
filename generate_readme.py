@@ -1,5 +1,6 @@
 import os
 from urllib.parse import quote
+import re
 
 # 복구된 헤더
 HEADER = """#
@@ -31,22 +32,27 @@ def get_language_from_extension(file_name):
             return language
     return None
 
-def extract_problem_description(readme_path):
-    """문제 폴더의 README.md에서 문제 설명 추출"""
-    problem_description = "문제 설명 없음"
+def extract_problem_info(readme_path):
+    """문제 폴더의 README.md에서 유형과 문제 난이도 추출"""
+    problem_type = "유형 없음"
+    problem_difficulty = "난이도 없음"
     try:
         with open(readme_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
             for line in lines:
-                if line.startswith("# ["):  # 제목 링크
-                    problem_description += line.strip() + " "
-                elif line.startswith("|유형|"):  # 표 시작
-                    # 문제 설명을 표 이후로 잘라냄
-                    problem_description += "\n" + "".join(lines[lines.index(line):])
-                    break
+                # 유형 및 난이도 추출 (예: |유형| Novice Low / 출력 / 변수 값 변경 |)
+                if line.startswith("|유형|"):
+                    match = re.search(r"\|유형\| (.*?) \|", line)
+                    if match:
+                        problem_type = match.group(1).strip()
+
+                elif line.startswith("|난이도|"):
+                    match = re.search(r"\|난이도\| (.*?) \|", line)
+                    if match:
+                        problem_difficulty = match.group(1).strip()
     except Exception as e:
         print(f"Error reading {readme_path}: {e}")
-    return problem_description.strip()
+    return problem_type, problem_difficulty
 
 def generate_readme():
     content = HEADER
@@ -66,7 +72,7 @@ def generate_readme():
                 continue
 
             problem_readme = os.path.join(problem_path, "README.md")
-            problem_description = extract_problem_description(problem_readme) if os.path.exists(problem_readme) else "문제 설명 없음"
+            problem_type, problem_difficulty = extract_problem_info(problem_readme) if os.path.exists(problem_readme) else ("유형 없음", "난이도 없음")
 
             # 날짜 및 문제 폴더
             content += f"| {date_folder} | [{problem_folder}]({quote(problem_path)}) | "
@@ -82,7 +88,7 @@ def generate_readme():
             if found_files:
                 for idx, (file_name, language, file_path) in enumerate(found_files):
                     if idx == 0:
-                        content += f"{file_name} | {language} | [링크]({quote(file_path)}) | {problem_description} |\n"
+                        content += f"{file_name} | {language} | [링크]({quote(file_path)}) | {problem_type} / {problem_difficulty} |\n"
                     else:
                         content += f"| | | {file_name} | {language} | [링크]({quote(file_path)}) | |\n"
             else:
