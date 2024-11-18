@@ -33,7 +33,7 @@ def get_language_from_extension(file_name):
 
 def extract_problem_description(readme_path):
     """문제 폴더의 README.md에서 문제 설명 추출"""
-    problem_description = ""
+    problem_description = "문제 설명 없음"
     try:
         with open(readme_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
@@ -41,6 +41,7 @@ def extract_problem_description(readme_path):
                 if line.startswith("# ["):  # 제목 링크
                     problem_description += line.strip() + " "
                 elif line.startswith("|유형|"):  # 표 시작
+                    # 문제 설명을 표 이후로 잘라냄
                     problem_description += "\n" + "".join(lines[lines.index(line):])
                     break
     except Exception as e:
