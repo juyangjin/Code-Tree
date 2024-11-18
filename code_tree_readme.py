@@ -22,10 +22,6 @@ def generate_readme():
     for root, dirs, files in os.walk("."):
         dirs.sort()
 
-        # 최상위 폴더 제외
-        if root == ".":
-            continue
-
         # 업로드 날짜(6자리 숫자) 폴더인지 확인
         parent_dir = os.path.basename(root)
         if not parent_dir.isdigit() or len(parent_dir) != 6:
