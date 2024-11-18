@@ -52,15 +52,14 @@ def generate_readme():
 
     # 날짜 폴더를 탐색
     for date_folder in sorted(os.listdir(".")):
-        if not date_folder.isdigit() or len(date_folder) != 6:
+        date_path = os.path.join(".", date_folder)
+        if not date_folder.isdigit() or len(date_folder) != 6 or not os.path.isdir(date_path):
             continue
 
-        date_path = os.path.join(".", date_folder)
-
-        # 문제 폴더 탐색
+        # 날짜 폴더 안의 문제 폴더 탐색
         for problem_folder in os.listdir(date_path):
             problem_path = os.path.join(date_path, problem_folder)
-            if not os.path.isdir(problem_path):
+            if not os.path.isdir(problem_path):  # 문제 폴더가 아니면 스킵
                 continue
 
             problem_readme = os.path.join(problem_path, "README.md")
