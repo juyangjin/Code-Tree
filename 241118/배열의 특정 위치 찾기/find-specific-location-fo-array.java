@@ -3,22 +3,28 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = 0;
-        double n2 = 0;
+        int[] n = new int[10]; 
+        int num = 0;
+        double num2 = 0;
         int len = 0;
 
-        for(int i=1;i<=10;i++){
-            if(i % 2 == 0) n += sc.nextInt();
-            else if(i % 3 == 0){
-                n2 += sc.nextDouble();
-                len++;
-            } 
-            else sc.nextInt();
+        for(int i=0;i<10;i++){
+            n[i] = sc.nextInt();
         }
 
-        System.out.print(n + " ");
-        n2 /= len;
-        double tmp = Math.round(n2);
-        System.out.print(tmp);
+        for(int i=0;i<10;i++){
+            if((i + 1) % 2 == 0){
+                num += n[i];
+            }
+            if((i + 1) % 3 == 0){
+                num2 += n[i];
+                len++;
+            }
+        }
+
+        System.out.print(num + " ");
+        num2 = (double) num2 / len;
+
+        System.out.printf("%.1f", num2);
     }
 }
