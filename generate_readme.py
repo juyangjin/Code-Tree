@@ -30,6 +30,13 @@ DIFFICULTY_IMAGES = {
     "어려움": "https://img.shields.io/badge/어려움-%23D24D57.svg?for-the-badge"
 }
 
+# 난이도별 이모티콘
+DIFFICULTY_EMOJIS = {
+    "쉬움": "🟢",   # Green Circle
+    "보통": "🟡",   # Yellow Circle
+    "어려움": "🔴"   # Red Circle
+}
+
 def get_language_from_extension(file_name):
     """파일 확장자를 기반으로 언어 반환"""
     for language, ext in SUPPORTED_LANGUAGES.items():
@@ -113,7 +120,9 @@ def generate_readme():
         # 난이도별 문제 추가 (문제가 있을 경우에만 해당 난이도 섹션을 출력)
         for difficulty in ["쉬움", "보통", "어려움"]:
             if problems_by_difficulty[difficulty]:  # 해당 난이도에 문제가 있으면 출력
-                content += f"### {difficulty}\n"
+                # 난이도별 이모티콘 추가
+                emoji = DIFFICULTY_EMOJIS[difficulty]
+                content += f"### {emoji} {difficulty}\n"
                 content += "| 업로드 날짜 | 문제 폴더 | 언어 | 링크 | 난이도 |\n"
                 content += "| ----------- | --------- | ---- | ----- | ------- |\n"
                 for problem in problems_by_difficulty[difficulty]:
