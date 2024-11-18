@@ -38,9 +38,7 @@ def main():
       continue
       
     if directory not in directories:
-      if directory in ["Code-Tree", "프로그래머스"]:
         content += "## 📚 {}\n".format(directory)
-      else:
         content += "### 🚀 {}\n".format(directory)
         content += "| 문제번호 | 링크 |\n"
         content += "| ----- | ----- |\n"
