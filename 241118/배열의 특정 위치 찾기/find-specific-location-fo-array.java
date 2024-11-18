@@ -17,7 +17,8 @@ public class Main {
         }
 
         System.out.print(n + " ");
-        double tmp = Math.round(n2 /= len);
+        n2 /= len;
+        double tmp = Math.round(n2);
         System.out.print(tmp);
     }
 }
