@@ -8,6 +8,20 @@ HEADER = """#
 [![코드트리|실력진단-wndid2008](https://banner.codetree.ai/v1/banner/wndid2008)](https://www.codetree.ai/profiles/wndid2008)
 """
 
+def extract_problem_description(readme_path):
+    """문제 폴더의 README.md에서 문제 설명 추출"""
+    problem_description = ""
+    try:
+        with open(readme_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+            # 필요한 부분 추출 (예시: 문제 링크와 유형 정보 추출)
+            for line in lines:
+                if line.startswith("|"):
+                    problem_description += line.strip() + "\n"
+    except Exception as e:
+        print(f"Error reading {readme_path}: {e}")
+    return problem_description
+
 def generate_readme():
     content = HEADER
     content += "## 🌳 코드트리 문제 목록\n"
@@ -31,9 +45,8 @@ def generate_readme():
             if file == "README.md":  # 문제 폴더 내 README.md
                 problem_folder_found = True
                 # 문제 폴더 내 README.md 파일에서 설명을 읽어옵니다.
-                with open(os.path.join(root, file), "r", encoding="utf-8") as f:
-                    lines = f.readlines()
-                    problem_description = "\n".join(lines[:5])  # 첫 5줄만 읽어오거나 적절히 조정
+                readme_path = os.path.join(root, file)
+                problem_description = extract_problem_description(readme_path)
                 break
             if file.endswith(".py"):  # .py 파일이 있으면 문제 폴더가 있다는 표시
                 problem_folder_found = True
