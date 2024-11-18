@@ -1,4 +1,4 @@
-name: update
+name: Update code_tree_readme
 on:
   push:
     branches: [ "main" ]
