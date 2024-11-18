@@ -8,8 +8,6 @@ HEADER = """#
 [![코드트리|실력진단-wndid2008](https://banner.codetree.ai/v1/banner/wndid2008)](https://www.codetree.ai/profiles/wndid2008)
 
 ## 🌳 코드트리 문제 목록
-| 업로드 날짜 | 문제 폴더 | 언어 | 링크 | 유형 | 난이도 |
-| ----------- | --------- | ---- | ----- | ---- | ------- |
 """
 
 SUPPORTED_LANGUAGES = {
@@ -39,31 +37,29 @@ def get_language_from_extension(file_name):
             return language
     return None
 
-def extract_problem_info(readme_path):
-    """문제 폴더의 README.md에서 유형과 문제 난이도 추출"""
-    problem_type = "유형 없음"
+def extract_problem_difficulty(readme_path):
+    """문제 폴더의 README.md에서 난이도 추출"""
     problem_difficulty = "쉬움"  # 기본 난이도는 쉬움으로 설정
     try:
         with open(readme_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
             for line in lines:
-                # 유형 추출 (예: |유형| Novice Low / 출력 / 변수 값 변경 |)
-                if "|유형|" in line:
-                    match = re.search(r"\|유형\| (.*?) \|", line)
-                    if match:
-                        problem_type = match.group(1).strip().split(" / ")[0]  # 첫 번째 부분만 추출 (예: Novice Low)
-
                 # 난이도 추출 (예: |난이도| 쉬움 |)
-                elif "|난이도|" in line:
+                if "|난이도|" in line:
                     match = re.search(r"\|난이도\| (.*?) \|", line)
                     if match:
                         problem_difficulty = match.group(1).strip()
     except Exception as e:
         print(f"Error reading {readme_path}: {e}")
-    return problem_type, problem_difficulty
+    return problem_difficulty
 
 def generate_readme():
-    content = HEADER
+    # 난이도별로 문제를 나누기 위한 딕셔너리
+    problems_by_difficulty = {
+        "쉬움": [],
+        "보통": [],
+        "어려움": []
+    }
 
     modified = False
 
@@ -80,13 +76,19 @@ def generate_readme():
                 continue
 
             problem_readme = os.path.join(problem_path, "README.md")
-            problem_type, problem_difficulty = extract_problem_info(problem_readme) if os.path.exists(problem_readme) else ("유형 없음", "쉬움")
+            problem_difficulty = extract_problem_difficulty(problem_readme) if os.path.exists(problem_readme) else "쉬움"
 
             # 난이도 이미지 링크 변환
             difficulty_image = DIFFICULTY_IMAGES.get(problem_difficulty, DIFFICULTY_IMAGES["쉬움"])
 
             # 날짜 및 문제 폴더
-            content += f"| {date_folder} | [{problem_folder}]({quote(problem_path)}) | "
+            problem_info = {
+                "date": date_folder,
+                "folder": problem_folder,
+                "difficulty": problem_difficulty,
+                "difficulty_image": difficulty_image,
+                "path": problem_path
+            }
 
             # 언어 탐색 (문제 폴더 안의 파일들을 통해 언어를 결정)
             found_language = None
@@ -96,16 +98,28 @@ def generate_readme():
                     found_language = language
                     break
 
-            # 언어가 발견되면 해당 언어 출력
             if found_language:
-                content += f"{found_language} | "
+                problem_info["language"] = found_language
+            else:
+                problem_info["language"] = "알 수 없음"
 
-            # 링크 추가
-            content += f"[링크]({quote(problem_path)}) | {problem_type} | ![쉬움]({difficulty_image}) |\n"
-
+            # 난이도별로 문제 분류
+            problems_by_difficulty[problem_difficulty].append(problem_info)
             modified = True
 
     if modified:
+        content = HEADER
+
+        # 난이도별 문제 추가 (문제가 있을 경우에만 해당 난이도 섹션을 출력)
+        for difficulty in ["쉬움", "보통", "어려움"]:
+            if problems_by_difficulty[difficulty]:  # 해당 난이도에 문제가 있으면 출력
+                content += f"### {difficulty}\n"
+                content += "| 업로드 날짜 | 문제 폴더 | 언어 | 링크 | 난이도 |\n"
+                content += "| ----------- | --------- | ---- | ----- | ------- |\n"
+                for problem in problems_by_difficulty[difficulty]:
+                    content += f"| {problem['date']} | [{problem['folder']}]({quote(problem['path'])}) | {problem['language']} | [링크]({quote(problem['path'])}) | ![쉬움]({problem['difficulty_image']}) |\n"
+
+        # 파일에 내용 저장
         with open("README.md", "w", encoding="utf-8") as fd:
             fd.write(content)
         print("README.md has been updated successfully.")
