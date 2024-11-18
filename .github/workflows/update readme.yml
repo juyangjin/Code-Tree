@@ -2,8 +2,8 @@ name: Update CodeTree README
 
 on:
   schedule:
-    - cron: "0 9 * * *"  # 매일 오전 9시에 실행 (UTC 기준)
-  workflow_dispatch: # 수동으로 실행할 수 있는 옵션
+    - cron: "0 9 * * *"  # 매일 오전 9시 (UTC 기준)
+  workflow_dispatch:  # 수동 실행
 
 jobs:
   update-readme:
@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3  # Node.js 20과 호환
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v4  # Node.js 20과 호환
       with:
         python-version: "3.9"
 
