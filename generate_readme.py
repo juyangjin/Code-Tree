@@ -8,7 +8,7 @@ HEADER = """#
 [![코드트리|실력진단-wndid2008](https://banner.codetree.ai/v1/banner/wndid2008)](https://www.codetree.ai/profiles/wndid2008)
 
 ## 🌳 코드트리 문제 목록
-| 업로드 날짜 | 문제 | 언어 | 링크 | 문제 설명 |
+| 업로드 날짜 | 문제 폴더 | 언어 | 링크 | 문제 설명 |
 | ----------- | --------- | ---- | ----- | --------- |
 """
 
@@ -47,12 +47,13 @@ def extract_problem_info(readme_path):
         with open(readme_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
             for line in lines:
-                # 유형 및 난이도 추출 (예: |유형| Novice Low / 출력 / 변수 값 변경 |)
+                # 유형 추출 (예: |유형| Novice Low / 출력 / 변수 값 변경 |)
                 if line.startswith("|유형|"):
                     match = re.search(r"\|유형\| (.*?) \|", line)
                     if match:
                         problem_type = match.group(1).strip().split(" / ")[0]  # 첫 번째 부분만 추출 (예: Novice Low)
 
+                # 난이도 추출 (예: |난이도| 쉬움 |)
                 elif line.startswith("|난이도|"):
                     match = re.search(r"\|난이도\| (.*?) \|", line)
                     if match:
