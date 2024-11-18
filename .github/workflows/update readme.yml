@@ -1,4 +1,4 @@
-name: Update CodeTree README
+name: Update code_tree_readme
 
 on:
   schedule:
