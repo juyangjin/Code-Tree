@@ -1,5 +1,5 @@
 import os
-from urllib import parse
+from urllib.parse import quote
 
 HEADER = """#
 # 코드트리 문제 풀이 목록
@@ -22,7 +22,7 @@ SUPPORTED_LANGUAGES = {
 def get_language_from_extension(file_name):
     """파일 확장자를 기반으로 언어 반환"""
     for language, ext in SUPPORTED_LANGUAGES.items():
-        if file_name.endswith(ext):
+        if file_name.lower().endswith(ext):
             return language
     return None
 
@@ -50,7 +50,7 @@ def generate_readme():
 
     modified = False
 
-    # 날짜 폴더를 탐색
+    # 날짜 폴더 탐색
     for date_folder in sorted(os.listdir(".")):
         date_path = os.path.join(".", date_folder)
         if not date_folder.isdigit() or len(date_folder) != 6 or not os.path.isdir(date_path):
@@ -66,7 +66,7 @@ def generate_readme():
             problem_description = extract_problem_description(problem_readme) if os.path.exists(problem_readme) else "문제 설명 없음"
 
             # 날짜 및 문제 폴더
-            content += f"| {date_folder} | [{problem_folder}]({parse.quote(problem_path)}) | "
+            content += f"| {date_folder} | [{problem_folder}]({quote(problem_path)}) | "
 
             # 파일 탐색
             found_files = []
@@ -79,9 +79,9 @@ def generate_readme():
             if found_files:
                 for idx, (file_name, language, file_path) in enumerate(found_files):
                     if idx == 0:
-                        content += f"{file_name} | {language} | [링크]({parse.quote(file_path)}) | {problem_description} |\n"
+                        content += f"{file_name} | {language} | [링크]({quote(file_path)}) | {problem_description} |\n"
                     else:
-                        content += f"| | | {file_name} | {language} | [링크]({parse.quote(file_path)}) | |\n"
+                        content += f"| | | {file_name} | {language} | [링크]({quote(file_path)}) | |\n"
             else:
                 content += "- | - | - | - |\n"
 
