@@ -10,7 +10,7 @@ public class Main {
         while(onoff){
             int n = sc.nextInt();
             len++;
-            if(n != 0 || len <= 4){
+            if(n != 0 || len < 4){
                 arr.add(n);
             }else{
                 arr.add(n);
@@ -23,7 +23,7 @@ public class Main {
 
         Collections.reverse(arr);
 
-        for(int i=0;i<=4;i++){
+        for(int i=0;i<4;i++){
             result += arr.get(i);
         }
 
