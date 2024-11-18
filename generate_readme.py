@@ -8,8 +8,8 @@ HEADER = """#
 [![코드트리|실력진단-wndid2008](https://banner.codetree.ai/v1/banner/wndid2008)](https://www.codetree.ai/profiles/wndid2008)
 
 ## 🌳 코드트리 문제 목록
-| 업로드 날짜 | 문제 폴더 | 언어 | 링크 | 문제 설명 |
-| ----------- | --------- | ---- | ----- | --------- |
+| 업로드 날짜 | 문제 폴더 | 언어 | 링크 | 유형 | 난이도 |
+| ----------- | --------- | ---- | ----- | ---- | ------- |
 """
 
 SUPPORTED_LANGUAGES = {
@@ -49,7 +49,6 @@ def extract_problem_info(readme_path):
             for line in lines:
                 # 유형 추출 (예: |유형| Novice Low / 출력 / 변수 값 변경 |)
                 if "|유형|" in line:
-                    # 유형을 정확히 추출하도록 수정 (예: |유형| Novice Low / 출력 / 변수 값 변경 |)
                     match = re.search(r"\|유형\| (.*?) \|", line)
                     if match:
                         problem_type = match.group(1).strip().split(" / ")[0]  # 첫 번째 부분만 추출 (예: Novice Low)
