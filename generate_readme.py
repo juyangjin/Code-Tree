@@ -8,8 +8,8 @@ HEADER = """#
 [![코드트리|실력진단-wndid2008](https://banner.codetree.ai/v1/banner/wndid2008)](https://www.codetree.ai/profiles/wndid2008)
 
 ## 🌳 코드트리 문제 목록
-| 업로드날짜 | 문제 폴더 | 파일 이름 | 언어 | 링크 | 문제 설명 |
-| ---------  | --------- | --------- | ---- | ----- | --------- |
+| 업로드 날짜 | 문제 폴더 | 언어 | 링크 | 문제 설명 |
+| ----------- | --------- | ---- | ----- | --------- |
 """
 
 SUPPORTED_LANGUAGES = {
@@ -87,22 +87,20 @@ def generate_readme():
             # 날짜 및 문제 폴더
             content += f"| {date_folder} | [{problem_folder}]({quote(problem_path)}) | "
 
-            # 파일 탐색
-            found_files = []
+            # 언어 탐색 (문제 폴더 안의 파일들을 통해 언어를 결정)
+            found_language = None
             for file_name in os.listdir(problem_path):
                 language = get_language_from_extension(file_name)
                 if language:
-                    file_path = os.path.join(problem_path, file_name)
-                    found_files.append((file_name, language, file_path))
+                    found_language = language
+                    break
 
-            if found_files:
-                for idx, (file_name, language, file_path) in enumerate(found_files):
-                    if idx == 0:
-                        content += f"{file_name} | {language} | [링크]({quote(file_path)}) | {problem_type} | ![쉬움]({difficulty_image}) |\n"
-                    else:
-                        content += f"| | | {file_name} | {language} | [링크]({quote(file_path)}) | | |\n"
-            else:
-                content += "- | - | - | - |\n"
+            # 언어가 발견되면 해당 언어 출력
+            if found_language:
+                content += f"{found_language} | "
+
+            # 링크 추가
+            content += f"[링크]({quote(problem_path)}) | {problem_type} | ![쉬움]({difficulty_image}) |\n"
 
             modified = True
 
