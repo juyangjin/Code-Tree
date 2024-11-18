@@ -1,9 +1,14 @@
 import os
 from urllib.parse import quote
 
+# 복구된 헤더
 HEADER = """#
 # 코드트리 문제 풀이 목록
 [![코드트리|실력진단-wndid2008](https://banner.codetree.ai/v1/banner/wndid2008)](https://www.codetree.ai/profiles/wndid2008)
+
+## 🌳 코드트리 문제 목록
+| 업로드 날짜 | 문제 폴더 | 파일 이름 | 언어 | 링크 | 문제 설명 |
+| ----------- | --------- | --------- | ---- | ----- | --------- |
 """
 
 SUPPORTED_LANGUAGES = {
@@ -33,9 +38,9 @@ def extract_problem_description(readme_path):
         with open(readme_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
             for line in lines:
-                if line.startswith("# "):  # 문제 제목
-                    problem_description += line.replace("# ", "").strip() + " "
-                if line.startswith("|유형|"):  # 표 시작
+                if line.startswith("# ["):  # 제목 링크
+                    problem_description += line.strip() + " "
+                elif line.startswith("|유형|"):  # 표 시작
                     problem_description += "\n" + "".join(lines[lines.index(line):])
                     break
     except Exception as e:
@@ -44,9 +49,6 @@ def extract_problem_description(readme_path):
 
 def generate_readme():
     content = HEADER
-    content += "## 🌳 코드트리 문제 목록\n"
-    content += "| 업로드 날짜 | 문제 폴더 | 파일 이름 | 언어 | 링크 | 문제 설명 |\n"
-    content += "| ----------- | --------- | --------- | ---- | ----- | --------- |\n"
 
     modified = False
 
@@ -93,3 +95,6 @@ def generate_readme():
         print("README.md has been updated successfully.")
     else:
         print("No changes were made to README.md.")
+
+if __name__ == "__main__":
+    generate_readme()
