@@ -1,4 +1,4 @@
-name: Update README
+name: code_tree_readme
 
 on:
   push:
