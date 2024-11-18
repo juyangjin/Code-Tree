@@ -48,13 +48,14 @@ def extract_problem_info(readme_path):
             lines = f.readlines()
             for line in lines:
                 # 유형 추출 (예: |유형| Novice Low / 출력 / 변수 값 변경 |)
-                if line.startswith("|유형|"):
+                if "|유형|" in line:
+                    # 유형을 정확히 추출하도록 수정 (예: |유형| Novice Low / 출력 / 변수 값 변경 |)
                     match = re.search(r"\|유형\| (.*?) \|", line)
                     if match:
                         problem_type = match.group(1).strip().split(" / ")[0]  # 첫 번째 부분만 추출 (예: Novice Low)
 
                 # 난이도 추출 (예: |난이도| 쉬움 |)
-                elif line.startswith("|난이도|"):
+                elif "|난이도|" in line:
                     match = re.search(r"\|난이도\| (.*?) \|", line)
                     if match:
                         problem_difficulty = match.group(1).strip()
