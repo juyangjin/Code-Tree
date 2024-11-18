@@ -56,10 +56,10 @@ def generate_readme():
         if not date_folder.isdigit() or len(date_folder) != 6 or not os.path.isdir(date_path):
             continue
 
-        # 날짜 폴더 안의 문제 폴더 탐색
+        # 날짜 폴더 안의 모든 하위 폴더 처리
         for problem_folder in os.listdir(date_path):
             problem_path = os.path.join(date_path, problem_folder)
-            if not os.path.isdir(problem_path):  # 문제 폴더가 아니면 스킵
+            if not os.path.isdir(problem_path):  # 하위 폴더가 아니면 스킵
                 continue
 
             problem_readme = os.path.join(problem_path, "README.md")
