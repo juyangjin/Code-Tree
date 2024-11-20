@@ -3,20 +3,17 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
        Scanner sc = new Scanner(System.in);
-       Map<String, Integer> arr = new HashMap<>();
-
-       arr.put("book", 3000);
-       arr.put("mask", 1000);
-
        int n = sc.nextInt();
-       int i = 0;
+       String result = "";
 
-       for (Map.Entry<String, String> entry : arr.entrySet()) {
-        if(arr.getValue > n) arr.remove(arr.getValue());
-        }
+       if(n >= 3000){
+        result = "book";
+       }else if(n >= 1000){
+        result = "mask";
+       }else{
+        result = "no";
+       }
 
-        Integer result = Collections.max(arr.keySet());
-
-        System.out.print(result);
+       System.out.print(result);
     }
 }
