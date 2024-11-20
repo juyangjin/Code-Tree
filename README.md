@@ -35,3 +35,4 @@
 | 241120 | [시력 검사 2](./241120/%EC%8B%9C%EB%A0%A5%20%EA%B2%80%EC%82%AC%202) | Java | [링크](./241120/%EC%8B%9C%EB%A0%A5%20%EA%B2%80%EC%82%AC%202) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241120 | [살 수 있는 물건](./241120/%EC%82%B4%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EB%AC%BC%EA%B1%B4) | Java | [링크](./241120/%EC%82%B4%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EB%AC%BC%EA%B1%B4) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241120 | [삼항연산자 2](./241120/%EC%82%BC%ED%95%AD%EC%97%B0%EC%82%B0%EC%9E%90%202) | Java | [링크](./241120/%EC%82%BC%ED%95%AD%EC%97%B0%EC%82%B0%EC%9E%90%202) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
+| 241120 | [살 수 있는 물건 2](./241120/%EC%82%B4%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EB%AC%BC%EA%B1%B4%202) | Java | [링크](./241120/%EC%82%B4%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EB%AC%BC%EA%B1%B4%202) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
