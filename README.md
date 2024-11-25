@@ -48,3 +48,4 @@
 | 241125 | [단어 출력](./241125/%EB%8B%A8%EC%96%B4%20%EC%B6%9C%EB%A0%A5) | Java | [링크](./241125/%EB%8B%A8%EC%96%B4%20%EC%B6%9C%EB%A0%A5) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241125 | [세 수의 중간값](./241125/%EC%84%B8%20%EC%88%98%EC%9D%98%20%EC%A4%91%EA%B0%84%EA%B0%92) | Java | [링크](./241125/%EC%84%B8%20%EC%88%98%EC%9D%98%20%EC%A4%91%EA%B0%84%EA%B0%92) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241125 | [문장 출력](./241125/%EB%AC%B8%EC%9E%A5%20%EC%B6%9C%EB%A0%A5) | Java | [링크](./241125/%EB%AC%B8%EC%9E%A5%20%EC%B6%9C%EB%A0%A5) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
+| 241125 | [두줄 출력](./241125/%EB%91%90%EC%A4%84%20%EC%B6%9C%EB%A0%A5) | Java | [링크](./241125/%EB%91%90%EC%A4%84%20%EC%B6%9C%EB%A0%A5) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
