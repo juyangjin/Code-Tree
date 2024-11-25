@@ -39,3 +39,4 @@
 | 241125 | [4번의 크기 비교](./241125/4%EB%B2%88%EC%9D%98%20%ED%81%AC%EA%B8%B0%20%EB%B9%84%EA%B5%90) | Java | [링크](./241125/4%EB%B2%88%EC%9D%98%20%ED%81%AC%EA%B8%B0%20%EB%B9%84%EA%B5%90) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241125 | [두 번의 연산](./241125/%EB%91%90%20%EB%B2%88%EC%9D%98%20%EC%97%B0%EC%82%B0) | Java | [링크](./241125/%EB%91%90%20%EB%B2%88%EC%9D%98%20%EC%97%B0%EC%82%B0) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241125 | [3 또는 5의 배수](./241125/3%20%EB%98%90%EB%8A%94%205%EC%9D%98%20%EB%B0%B0%EC%88%98) | Java | [링크](./241125/3%20%EB%98%90%EB%8A%94%205%EC%9D%98%20%EB%B0%B0%EC%88%98) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
+| 241125 | [세 수의 중간값](./241125/%EC%84%B8%20%EC%88%98%EC%9D%98%20%EC%A4%91%EA%B0%84%EA%B0%92) | Java | [링크](./241125/%EC%84%B8%20%EC%88%98%EC%9D%98%20%EC%A4%91%EA%B0%84%EA%B0%92) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
