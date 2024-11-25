@@ -37,3 +37,4 @@
 | 241120 | [삼항연산자 2](./241120/%EC%82%BC%ED%95%AD%EC%97%B0%EC%82%B0%EC%9E%90%202) | Java | [링크](./241120/%EC%82%BC%ED%95%AD%EC%97%B0%EC%82%B0%EC%9E%90%202) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241120 | [살 수 있는 물건 2](./241120/%EC%82%B4%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EB%AC%BC%EA%B1%B4%202) | Java | [링크](./241120/%EC%82%B4%20%EC%88%98%20%EC%9E%88%EB%8A%94%20%EB%AC%BC%EA%B1%B4%202) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241125 | [두 번의 연산](./241125/%EB%91%90%20%EB%B2%88%EC%9D%98%20%EC%97%B0%EC%82%B0) | Java | [링크](./241125/%EB%91%90%20%EB%B2%88%EC%9D%98%20%EC%97%B0%EC%82%B0) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
+| 241125 | [3 또는 5의 배수](./241125/3%20%EB%98%90%EB%8A%94%205%EC%9D%98%20%EB%B0%B0%EC%88%98) | Java | [링크](./241125/3%20%EB%98%90%EB%8A%94%205%EC%9D%98%20%EB%B0%B0%EC%88%98) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
