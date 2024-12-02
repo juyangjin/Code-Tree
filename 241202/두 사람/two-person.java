@@ -16,6 +16,7 @@ public class Main {
             tmp = Integer.parseInt(str_one[0]);
             if(tmp > 19) answer = 1;
         }
+        tmp = 0;
         if(two.contains("M")){
             tmp = Integer.parseInt(str_two[0]);
             if(tmp > 19) answer = 1;
