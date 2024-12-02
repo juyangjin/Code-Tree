@@ -12,7 +12,10 @@ public class Main {
         String[] str_two = one.split(" ");
         int tmp = 0;
 
-        if(one.contains("M")){
+        if(one.contains("W") && two.contains("w")){
+            answer = 0;
+        }else{
+            if(one.contains("M")){
             tmp = Integer.parseInt(str_one[0]);
             if(tmp > 19) answer = 1;
         }
@@ -21,7 +24,8 @@ public class Main {
             tmp = Integer.parseInt(str_two[0]);
             if(tmp > 19) answer = 1;
         }
-
+        }
+        
         System.out.print(answer);
     }
 }
