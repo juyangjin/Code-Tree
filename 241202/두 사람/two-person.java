@@ -18,11 +18,13 @@ public class Main {
             if(one.contains("M")){
             tmp = Integer.parseInt(str_one[0]);
             if(tmp >= 19) answer = 1;
+            else answer = 0;
         }
         tmp = 0;
         if(two.contains("M")){
             tmp = Integer.parseInt(str_two[0]);
             if(tmp >= 19) answer = 1;
+            else answer = 0;
         }
         }
         
