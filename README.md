@@ -57,4 +57,5 @@
 | 241202 | [홀수만 출력](./241202/%ED%99%80%EC%88%98%EB%A7%8C%20%EC%B6%9C%EB%A0%A5) | Java | [링크](./241202/%ED%99%80%EC%88%98%EB%A7%8C%20%EC%B6%9C%EB%A0%A5) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241202 | [두 사람](./241202/%EB%91%90%20%EC%82%AC%EB%9E%8C) | Java | [링크](./241202/%EB%91%90%20%EC%82%AC%EB%9E%8C) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241202 | [n번 더하기](./241202/n%EB%B2%88%20%EB%8D%94%ED%95%98%EA%B8%B0) | Java | [링크](./241202/n%EB%B2%88%20%EB%8D%94%ED%95%98%EA%B8%B0) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
+| 241202 | [자연수면 출력](./241202/%EC%9E%90%EC%97%B0%EC%88%98%EB%A9%B4%20%EC%B6%9C%EB%A0%A5) | Java | [링크](./241202/%EC%9E%90%EC%97%B0%EC%88%98%EB%A9%B4%20%EC%B6%9C%EB%A0%A5) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241202 | [1부터 n까지 출력](./241202/1%EB%B6%80%ED%84%B0%20n%EA%B9%8C%EC%A7%80%20%EC%B6%9C%EB%A0%A5) | Java | [링크](./241202/1%EB%B6%80%ED%84%B0%20n%EA%B9%8C%EC%A7%80%20%EC%B6%9C%EB%A0%A5) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
