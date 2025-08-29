@@ -65,3 +65,4 @@
 | 241202 | [홀수만 출력](./241202/%ED%99%80%EC%88%98%EB%A7%8C%20%EC%B6%9C%EB%A0%A5) | Java | [링크](./241202/%ED%99%80%EC%88%98%EB%A7%8C%20%EC%B6%9C%EB%A0%A5) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 241205 | [정수 선언하고 뺄셈](./241205/%EC%A0%95%EC%88%98%20%EC%84%A0%EC%96%B8%ED%95%98%EA%B3%A0%20%EB%BA%84%EC%85%88) | Java | [링크](./241205/%EC%A0%95%EC%88%98%20%EC%84%A0%EC%96%B8%ED%95%98%EA%B3%A0%20%EB%BA%84%EC%85%88) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
 | 250829 | [출력 입문 퀴즈](./250829/%EC%B6%9C%EB%A0%A5%20%EC%9E%85%EB%AC%B8%20%ED%80%B4%EC%A6%88) | 알 수 없음 | [링크](./250829/%EC%B6%9C%EB%A0%A5%20%EC%9E%85%EB%AC%B8%20%ED%80%B4%EC%A6%88) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
+| 250829 | [2줄 출력](./250829/2%EC%A4%84%20%EC%B6%9C%EB%A0%A5) | C | [링크](./250829/2%EC%A4%84%20%EC%B6%9C%EB%A0%A5) | ![쉬움](https://img.shields.io/badge/쉬움-%235cb85c.svg?for-the-badge) |
